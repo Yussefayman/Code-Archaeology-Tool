@@ -1,6 +1,6 @@
-# OnboardingAgent - Quick Start Guide
+# Code Archaeology Tool - Quick Start Guide
 
-This guide will get you up and running with OnboardingAgent in 5 minutes!
+This guide will get you up and running with Code Archaeology Tool in 5 minutes!
 
 ## Prerequisites
 
@@ -15,8 +15,8 @@ This guide will get you up and running with OnboardingAgent in 5 minutes!
 
 ```bash
 # Clone the repository
-git clone https://github.com/yourusername/onboarding-agent.git
-cd onboarding-agent
+git clone https://github.com/yourusername/code-archaeology.git
+cd code-archaeology
 
 # Create virtual environment
 python3.11 -m venv venv
@@ -52,14 +52,14 @@ LLM_MODEL=llama-3.1-70b-versatile
 
 ```bash
 # Analyze any repository
-onboarding-agent chat --repo-path /path/to/your/project
+code-archaeology chat --repo-path /path/to/your/project
 ```
 
 Example interaction:
 ```
 You > Show me the core modules
 
-OnboardingAgent > Core Modules Analysis
+Code Archaeology Tool > Core Modules Analysis
 These are the most important modules to understand:
 
 1. **src/core/database.py**
@@ -72,25 +72,25 @@ These are the most important modules to understand:
 
 ```bash
 # Get instant analysis without LLM
-onboarding-agent analyze --repo-path /path/to/your/project
+code-archaeology analyze --repo-path /path/to/your/project
 ```
 
 ### Option 3: Docker
 
 ```bash
 # Build image
-docker build -t onboarding-agent .
+docker build -t code-archaeology .
 
 # Run with your repository
 docker run -it \
   -e GROQ_API_KEY=your-key \
   -v /path/to/your/repo:/workspace \
-  onboarding-agent:latest chat --repo-path /workspace
+  code-archaeology:latest chat --repo-path /workspace
 ```
 
 ## Example Questions
 
-Try asking OnboardingAgent:
+Try asking Code Archaeology Tool:
 
 - "Where should I start to add a payment feature?"
 - "Create a learning path for authentication"
@@ -103,7 +103,7 @@ Try asking OnboardingAgent:
 We include a sample repository for testing:
 
 ```bash
-onboarding-agent analyze --repo-path examples/sample_repo
+code-archaeology analyze --repo-path examples/sample_repo
 ```
 
 ## Troubleshooting
@@ -132,7 +132,7 @@ git commit -m "Initial commit"
 
 ## Support
 
-- Issues: https://github.com/yourusername/onboarding-agent/issues
+- Issues: https://github.com/yourusername/code-archaeology/issues
 - Docs: Check the README.md
 
 ---

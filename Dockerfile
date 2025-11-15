@@ -1,4 +1,4 @@
-# Multi-stage Dockerfile for OnboardingAgent
+# Multi-stage Dockerfile for Code Archaeology Tool
 
 # Stage 1: Builder
 FROM python:3.11-slim as builder
@@ -55,5 +55,5 @@ ENV PYTHONUNBUFFERED=1
 ENV PYTHONDONTWRITEBYTECODE=1
 
 # Default command
-ENTRYPOINT ["onboarding-agent"]
+ENTRYPOINT ["code-archaeology"]
 CMD ["--help"]

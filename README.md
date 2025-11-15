@@ -1,14 +1,14 @@
-# OnboardingAgent - The Mentor 🤖
+# Code Archaeology Tool - The Mentor 🤖
 
 > An AI-powered assistant that helps developers navigate and understand codebases through intelligent analysis and guided learning paths.
 
-[![CI/CD](https://github.com/yourusername/onboarding-agent/actions/workflows/ci.yml/badge.svg)](https://github.com/yourusername/onboarding-agent/actions)
+[![CI/CD](https://github.com/yourusername/code-archaeology/actions/workflows/ci.yml/badge.svg)](https://github.com/yourusername/code-archaeology/actions)
 [![Python 3.11+](https://img.shields.io/badge/python-3.11+-blue.svg)](https://www.python.org/downloads/)
 [![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)
 
 ## 🌟 Features
 
-OnboardingAgent is your friendly AI mentor that helps you:
+Code Archaeology Tool is your friendly AI mentor that helps you:
 
 - **🎯 Find Entry Points**: Suggest the best files to start with for specific tasks
 - **📚 Generate Learning Paths**: Create progressive learning journeys from simple to complex
@@ -45,8 +45,8 @@ Built using modern AI and code analysis tools:
 #### 1. Clone the repository
 
 ```bash
-git clone https://github.com/yourusername/onboarding-agent.git
-cd onboarding-agent
+git clone https://github.com/yourusername/code-archaeology.git
+cd code-archaeology
 ```
 
 #### 2. Create a virtual environment
@@ -87,20 +87,20 @@ LLM_MODEL=llama-3.1-70b-versatile
 # LLM_MODEL=claude-3-opus-20240229
 ```
 
-#### 5. Run OnboardingAgent
+#### 5. Run Code Archaeology Tool
 
 ```bash
 # Interactive chat mode
-onboarding-agent chat --repo-path /path/to/your/project
+code-archaeology chat --repo-path /path/to/your/project
 
 # Quick analysis (no LLM required for basic stats)
-onboarding-agent analyze --repo-path /path/to/your/project
+code-archaeology analyze --repo-path /path/to/your/project
 
 # Show configuration
-onboarding-agent config
+code-archaeology config
 
 # Show version
-onboarding-agent version
+code-archaeology version
 ```
 
 ### Option 2: Docker
@@ -108,7 +108,7 @@ onboarding-agent version
 #### 1. Build the image
 
 ```bash
-docker build -t onboarding-agent .
+docker build -t code-archaeology .
 ```
 
 #### 2. Run with Docker Compose
@@ -119,10 +119,10 @@ cp .env.example .env
 nano .env
 
 # Run interactive chat
-docker-compose run onboarding-agent chat --repo-path /workspace
+docker-compose run code-archaeology chat --repo-path /workspace
 
 # Run quick analysis
-docker-compose run onboarding-agent analyze --repo-path /workspace
+docker-compose run code-archaeology analyze --repo-path /workspace
 ```
 
 #### 3. Or run directly with Docker
@@ -132,7 +132,7 @@ docker run -it \
   -e GROQ_API_KEY=your-key-here \
   -e LLM_PROVIDER=groq \
   -v $(pwd):/workspace \
-  onboarding-agent:latest chat --repo-path /workspace
+  code-archaeology:latest chat --repo-path /workspace
 ```
 
 ## 📖 Usage Examples
@@ -140,9 +140,9 @@ docker run -it \
 ### Interactive Chat Mode
 
 ```bash
-$ onboarding-agent chat --repo-path ~/projects/my-app
+$ code-archaeology chat --repo-path ~/projects/my-app
 
-OnboardingAgent - The Mentor
+Code Archaeology Tool - The Mentor
 ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
 I'll help you navigate this codebase!
 
@@ -159,7 +159,7 @@ Type 'quit' or 'exit' to end the session
 
 You > Where should I start to add a payment processing feature?
 
-OnboardingAgent > Based on my analysis of your codebase, here are the best entry points
+Code Archaeology Tool > Based on my analysis of your codebase, here are the best entry points
 for adding payment processing:
 
 1. **src/payments/__init__.py**
@@ -185,7 +185,7 @@ how transactions are processed.
 ### Quick Analysis
 
 ```bash
-$ onboarding-agent analyze --repo-path ~/projects/my-app
+$ code-archaeology analyze --repo-path ~/projects/my-app
 
 Quick Codebase Analysis
 ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
@@ -229,7 +229,7 @@ Overview:
 
 ### Example Queries
 
-Here are some questions you can ask the OnboardingAgent:
+Here are some questions you can ask the Code Archaeology Tool:
 
 **Finding Entry Points:**
 - "Where should I start to fix the authentication bug?"
@@ -258,7 +258,7 @@ Here are some questions you can ask the OnboardingAgent:
 pytest
 
 # Run with coverage
-pytest --cov=src/onboarding_agent --cov-report=html
+pytest --cov=src/code_archaeology --cov-report=html
 
 # Run specific test file
 pytest tests/test_analyzers/test_ast_analyzer.py
@@ -272,11 +272,11 @@ docker-compose run test
 ### Project Structure
 
 ```
-onboarding-agent/
+code-archaeology/
 ├── src/
-│   └── onboarding_agent/
+│   └── code_archaeology/
 │       ├── agents/           # Agent implementations
-│       │   └── onboarding_agent.py
+│       │   └── code_archaeology.py
 │       ├── tools/            # LangChain tools
 │       │   ├── entry_point_tool.py
 │       │   ├── learning_path_tool.py
@@ -360,7 +360,7 @@ nano .env  # Add your API key
 **Issue: "Repository path does not exist"**
 ```bash
 # Use absolute path or correct relative path
-onboarding-agent chat --repo-path /full/path/to/repo
+code-archaeology chat --repo-path /full/path/to/repo
 ```
 
 **Issue: "Not a git repository"**
@@ -383,7 +383,7 @@ git config --global user.email "your.email@example.com"
 ```bash
 # Clean Docker cache and rebuild
 docker system prune -a
-docker build --no-cache -t onboarding-agent .
+docker build --no-cache -t code-archaeology .
 ```
 
 ## 🤝 Contributing

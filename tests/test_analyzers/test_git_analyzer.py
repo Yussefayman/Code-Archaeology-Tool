@@ -4,7 +4,7 @@ from pathlib import Path
 
 import pytest
 
-from onboarding_agent.analyzers import GitAnalyzer
+from code_archaeology.analyzers import GitAnalyzer
 
 
 def test_git_analyzer_init(sample_repo: Path) -> None:
