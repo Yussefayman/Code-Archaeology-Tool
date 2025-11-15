@@ -18,15 +18,26 @@ This guide will get you up and running with Code Archaeology Tool in 5 minutes!
 git clone https://github.com/yourusername/code-archaeology.git
 cd code-archaeology
 
-# Create virtual environment
+# Option A: Standard virtual environment
 python3.11 -m venv venv
 source venv/bin/activate  # On WSL/Linux/Mac
+
+# Option B: Using uv (10-100x faster!)
+curl -LsSf https://astral.sh/uv/install.sh | sh
+uv venv
+source .venv/bin/activate
 ```
 
 ### 2. Install Dependencies
 
+**Using pip (standard):**
 ```bash
 pip install -e .
+```
+
+**Using uv (faster!):**
+```bash
+uv pip install -e .
 ```
 
 ### 3. Configure Environment

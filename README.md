@@ -3,7 +3,9 @@
 > An AI-powered assistant that helps developers navigate and understand codebases through intelligent analysis and guided learning paths.
 
 [![CI/CD](https://github.com/yourusername/code-archaeology/actions/workflows/ci.yml/badge.svg)](https://github.com/yourusername/code-archaeology/actions)
+[![CI/CD with UV](https://github.com/yourusername/code-archaeology/actions/workflows/ci-uv.yml/badge.svg)](https://github.com/yourusername/code-archaeology/actions)
 [![Python 3.11+](https://img.shields.io/badge/python-3.11+-blue.svg)](https://www.python.org/downloads/)
+[![uv](https://img.shields.io/endpoint?url=https://raw.githubusercontent.com/astral-sh/uv/main/assets/badge/v0.json)](https://github.com/astral-sh/uv)
 [![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)
 
 ## 🌟 Features
@@ -40,7 +42,24 @@ Built using modern AI and code analysis tools:
 
 ## 🚀 Quick Start
 
-### Option 1: Local Installation
+### ⚡ Super Fast Installation (Recommended)
+
+Use the automated installation script:
+
+```bash
+# Clone and run the install script
+git clone https://github.com/yourusername/code-archaeology.git
+cd code-archaeology
+./install.sh
+```
+
+This script will let you choose between **pip** (standard) or **uv** (10-100x faster!) and handle everything automatically.
+
+> 💡 **New to UV?** Check out our detailed [UV Installation Guide](UV_INSTALLATION.md) to learn why it's 10-100x faster than pip!
+
+---
+
+### Option 1: Manual Local Installation
 
 #### 1. Clone the repository
 
@@ -51,15 +70,32 @@ cd code-archaeology
 
 #### 2. Create a virtual environment
 
+**Option A: Using standard venv**
 ```bash
 python3.11 -m venv venv
 source venv/bin/activate  # On Windows (WSL): source venv/bin/activate
 ```
 
+**Option B: Using uv (faster!)**
+```bash
+# Install uv if you don't have it
+curl -LsSf https://astral.sh/uv/install.sh | sh
+
+# Create virtual environment with uv
+uv venv
+source .venv/bin/activate  # On Windows (WSL): source .venv/bin/activate
+```
+
 #### 3. Install dependencies
 
+**Option A: Using pip**
 ```bash
 pip install -e ".[dev]"
+```
+
+**Option B: Using uv (10-100x faster!)**
+```bash
+uv pip install -e ".[dev]"
 ```
 
 #### 4. Set up environment variables
@@ -107,8 +143,14 @@ code-archaeology version
 
 #### 1. Build the image
 
+**Standard Dockerfile:**
 ```bash
 docker build -t code-archaeology .
+```
+
+**UV-optimized Dockerfile (faster builds!):**
+```bash
+docker build -f Dockerfile.uv -t code-archaeology:uv .
 ```
 
 #### 2. Run with Docker Compose
