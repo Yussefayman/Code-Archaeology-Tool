@@ -1,0 +1,40 @@
+version: '3.8'
+
+services:
+  onboarding-agent:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    image: onboarding-agent:latest
+    container_name: onboarding-agent
+    environment:
+      # Load from .env file
+      - GROQ_API_KEY=${GROQ_API_KEY}
+      - OPENAI_API_KEY=${OPENAI_API_KEY:-}
+      - ANTHROPIC_API_KEY=${ANTHROPIC_API_KEY:-}
+      - LLM_PROVIDER=${LLM_PROVIDER:-groq}
+      - LLM_MODEL=${LLM_MODEL:-llama-3.1-70b-versatile}
+      - TEMPERATURE=${TEMPERATURE:-0.2}
+      - MAX_TOKENS=${MAX_TOKENS:-4000}
+      - MAX_ITERATIONS=${MAX_ITERATIONS:-5}
+      - LOG_LEVEL=${LOG_LEVEL:-INFO}
+    volumes:
+      # Mount the repository you want to analyze
+      - ${REPO_PATH:-.}:/workspace:ro
+    working_dir: /workspace
+    stdin_open: true
+    tty: true
+    command: chat --repo-path /workspace
+
+  # Test runner service
+  test:
+    build:
+      context: .
+      dockerfile: Dockerfile
+      target: builder
+    image: onboarding-agent:test
+    container_name: onboarding-agent-test
+    volumes:
+      - .:/app
+    working_dir: /app
+    command: pytest -v
