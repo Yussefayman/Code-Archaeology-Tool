@@ -1,0 +1,38 @@
+# Alternative Dockerfile using curl to install UV (more reliable for slow connections)
+FROM python:3.11-slim
+
+# Set working directory
+WORKDIR /app
+
+# Install system dependencies including curl
+RUN apt-get update && apt-get install -y --no-install-recommends \
+    git \
+    curl \
+    ca-certificates \
+    && rm -rf /var/lib/apt/lists/*
+
+# Install UV using standalone installer (more reliable than pip for slow connections)
+RUN curl -LsSf https://astral.sh/uv/install.sh | sh && \
+    ln -s /root/.cargo/bin/uv /usr/local/bin/uv
+
+# Copy application code
+COPY src/ /app/src/
+COPY pyproject.toml /app/
+
+# Install dependencies with UV (no venv in Docker!)
+RUN uv pip install --system -e .
+
+# Set Python environment variables
+ENV PYTHONUNBUFFERED=1
+ENV PYTHONDONTWRITEBYTECODE=1
+
+# Create a non-root user
+RUN useradd -m -u 1000 appuser && \
+    chown -R appuser:appuser /app
+
+# Switch to non-root user
+USER appuser
+
+# Default command
+ENTRYPOINT ["code-archaeology"]
+CMD ["--help"]
