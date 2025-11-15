@@ -13,7 +13,7 @@ services:
       - OPENAI_API_KEY=${OPENAI_API_KEY:-}
       - ANTHROPIC_API_KEY=${ANTHROPIC_API_KEY:-}
       - LLM_PROVIDER=${LLM_PROVIDER:-groq}
-      - LLM_MODEL=${LLM_MODEL:-llama-3.1-70b-versatile}
+      - LLM_MODEL=${LLM_MODEL:-llama-3.3-70b-versatile}
       - TEMPERATURE=${TEMPERATURE:-0.2}
       - MAX_TOKENS=${MAX_TOKENS:-4000}
       - MAX_ITERATIONS=${MAX_ITERATIONS:-5}

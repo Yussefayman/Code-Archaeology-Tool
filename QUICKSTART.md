@@ -54,7 +54,7 @@ Add your Groq API key:
 ```
 GROQ_API_KEY=gsk_your-key-here
 LLM_PROVIDER=groq
-LLM_MODEL=llama-3.1-70b-versatile
+LLM_MODEL=llama-3.3-70b-versatile
 ```
 
 ## Usage

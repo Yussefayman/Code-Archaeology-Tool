@@ -88,7 +88,7 @@ def cli() -> None:
 @click.option(
     "--model",
     "-m",
-    help="Model name (e.g., llama-3.1-70b-versatile, gpt-4-turbo-preview)",
+    help="Model name (e.g., llama-3.3-70b-versatile, gpt-4-turbo-preview)",
 )
 def chat(
     repo_path: Optional[str],

@@ -110,7 +110,7 @@ Edit `.env` and add your API key:
 # For Groq (recommended)
 GROQ_API_KEY=gsk_your-groq-key-here
 LLM_PROVIDER=groq
-LLM_MODEL=llama-3.1-70b-versatile
+LLM_MODEL=llama-3.3-70b-versatile
 
 # For OpenAI
 # OPENAI_API_KEY=sk-your-openai-key-here
@@ -223,7 +223,7 @@ Code Archaeology Tool - The Mentor
 I'll help you navigate this codebase!
 
 Repository: /home/user/projects/my-app
-LLM: groq (llama-3.1-70b-versatile)
+LLM: groq (llama-3.3-70b-versatile)
 
 Try asking:
   - Where should I start to add a new feature?
@@ -398,7 +398,7 @@ Configuration is managed through environment variables in `.env`:
 | `OPENAI_API_KEY` | OpenAI API key | - |
 | `ANTHROPIC_API_KEY` | Anthropic API key | - |
 | `LLM_PROVIDER` | LLM provider (groq/openai/anthropic) | groq |
-| `LLM_MODEL` | Model name | llama-3.1-70b-versatile |
+| `LLM_MODEL` | Model name | llama-3.3-70b-versatile |
 | `TEMPERATURE` | LLM temperature (0.0-1.0) | 0.2 |
 | `MAX_TOKENS` | Maximum tokens per response | 4000 |
 | `MAX_ITERATIONS` | Max agent iterations | 5 |
