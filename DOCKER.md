@@ -52,9 +52,27 @@ docker build -f Dockerfile.uv -t code-archaeology:uv .
 - Direct system installation with `uv pip install --system`
 - No virtual environment overhead
 
+**How UV is installed in Docker:**
+
+We install UV via pip for maximum reliability in Docker:
+
+```dockerfile
+# Install UV via pip (most reliable for Docker)
+RUN pip install --no-cache-dir uv
+
+# Then use UV to install dependencies
+RUN uv pip install --system -e .
+```
+
+Why pip for UV installation?
+- ✅ **Reliable**: UV is automatically in PATH
+- ✅ **Simple**: No need to manage cargo/rust paths
+- ✅ **Fast**: UV binary downloads quickly via pip
+- ✅ **Standard**: Works across all Python base images
+
 **Key difference in UV Dockerfile:**
 ```dockerfile
-# ✅ Correct: Direct system installation
+# ✅ Correct: Direct system installation (no venv!)
 RUN uv pip install --system -e .
 
 # ❌ Wrong: Unnecessary venv in Docker
