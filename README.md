@@ -179,6 +179,40 @@ docker run -it \
 
 ## 📖 Usage Examples
 
+### Analyzing GitHub Repositories
+
+You can analyze any public GitHub repository directly by providing its URL:
+
+```bash
+# Analyze a GitHub repository
+$ code-archaeology analyze --repo-path https://github.com/django/django
+
+Detected GitHub URL, cloning repository...
+Cloning django/django...
+✓ Repository cloned to /tmp/code-archaeology-abc123/django
+
+Quick Codebase Analysis
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+Repository: /tmp/code-archaeology-abc123/django
+
+Core Modules Analysis
+...
+
+# With interactive chat
+$ code-archaeology chat --repo-path https://github.com/flask/flask
+
+# For private repositories, set your GitHub token
+$ export GITHUB_TOKEN=ghp_your_token_here
+$ code-archaeology analyze --repo-path https://github.com/yourorg/private-repo
+```
+
+**Supported URL formats:**
+- `https://github.com/user/repo`
+- `git@github.com:user/repo.git`
+- `github.com/user/repo`
+
+The repository will be cloned to a temporary directory and automatically cleaned up when done!
+
 ### Interactive Chat Mode
 
 ```bash
