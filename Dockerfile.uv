@@ -1,50 +1,30 @@
-# Multi-stage Dockerfile for Code Archaeology Tool using UV (ultra-fast!)
+# Dockerfile for Code Archaeology Tool using UV (ultra-fast!)
+# Note: No virtual environment needed - Docker provides isolation!
 
-# Stage 1: Builder with UV
-FROM python:3.11-slim as builder
-
-# Set working directory
-WORKDIR /build
-
-# Install system dependencies
-RUN apt-get update && apt-get install -y --no-install-recommends \
-    curl \
-    ca-certificates \
-    git \
-    && rm -rf /var/lib/apt/lists/*
-
-# Install uv (ultra-fast Python package installer)
-RUN curl -LsSf https://astral.sh/uv/install.sh | sh
-ENV PATH="/root/.cargo/bin:$PATH"
-
-# Copy requirements
-COPY pyproject.toml .
-
-# Create virtual environment and install dependencies with UV
-RUN uv venv /opt/venv
-ENV PATH="/opt/venv/bin:$PATH"
-RUN uv pip install -e .
-
-# Stage 2: Runtime
 FROM python:3.11-slim
 
 # Set working directory
 WORKDIR /app
 
-# Install runtime dependencies
+# Install system dependencies and UV
 RUN apt-get update && apt-get install -y --no-install-recommends \
+    curl \
+    ca-certificates \
     git \
-    && rm -rf /var/lib/apt/lists/*
+    && rm -rf /var/lib/apt/lists/* \
+    && curl -LsSf https://astral.sh/uv/install.sh | sh
 
-# Copy virtual environment from builder
-COPY --from=builder /opt/venv /opt/venv
+# Add UV to PATH
+ENV PATH="/root/.cargo/bin:$PATH"
 
-# Copy application code
+# Copy application code first
 COPY src/ /app/src/
 COPY pyproject.toml /app/
 
-# Set PATH to use virtual environment
-ENV PATH="/opt/venv/bin:$PATH"
+# Install dependencies directly with UV (no venv needed in Docker!)
+RUN uv pip install --system -e .
+
+# Set Python environment variables
 ENV PYTHONUNBUFFERED=1
 ENV PYTHONDONTWRITEBYTECODE=1
 
