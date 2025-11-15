@@ -55,7 +55,7 @@ jobs:
 
     - name: Run tests with coverage
       run: |
-        pytest -v --cov=src/onboarding_agent --cov-report=xml --cov-report=term
+        pytest -v --cov=src/code_archaeology --cov-report=xml --cov-report=term
 
     - name: Upload coverage to Codecov
       uses: codecov/codecov-action@v3
@@ -79,13 +79,13 @@ jobs:
       with:
         context: .
         push: false
-        tags: onboarding-agent:test
+        tags: code-archaeology:test
         cache-from: type=gha
         cache-to: type=gha,mode=max
 
     - name: Test Docker image
       run: |
-        docker run --rm onboarding-agent:test --help
+        docker run --rm code-archaeology:test --help
 
   integration-test:
     runs-on: ubuntu-latest
@@ -122,11 +122,11 @@ jobs:
     - name: Test CLI commands
       run: |
         # Test version command
-        onboarding-agent version
+        code-archaeology version
 
         # Test config command
-        onboarding-agent config
+        code-archaeology config
 
         # Test analyze command (without LLM)
-        # onboarding-agent analyze --repo-path /tmp/test-repo
+        # code-archaeology analyze --repo-path /tmp/test-repo
       continue-on-error: true

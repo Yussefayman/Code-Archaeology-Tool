@@ -4,7 +4,7 @@ from typing import Dict, List, Any
 from langchain.tools import BaseTool
 from pydantic import Field
 
-from onboarding_agent.analyzers import (
+from code_archaeology.analyzers import (
     ASTAnalyzer,
     DependencyAnalyzer,
     GitAnalyzer,

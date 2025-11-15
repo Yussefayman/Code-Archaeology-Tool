@@ -1,4 +1,4 @@
-"""Main CLI entry point for OnboardingAgent."""
+"""Main CLI entry point for Code Archaeology Tool."""
 
 import os
 import sys
@@ -11,15 +11,15 @@ from rich.markdown import Markdown
 from rich.panel import Panel
 from rich.prompt import Prompt
 
-from onboarding_agent.agents import OnboardingAgent
-from onboarding_agent.orchestrator import get_llm, load_config
+from code_archaeology.agents import CodeArchaeologyAgent
+from code_archaeology.orchestrator import get_llm, load_config
 
 console = Console()
 
 
 @click.group()
 def cli() -> None:
-    """OnboardingAgent - Your AI mentor for navigating codebases."""
+    """Code Archaeology Tool - Your AI mentor for navigating codebases."""
     pass
 
 
@@ -46,7 +46,7 @@ def chat(
     llm_provider: Optional[str],
     model: Optional[str],
 ) -> None:
-    """Start an interactive chat session with the OnboardingAgent."""
+    """Start an interactive chat session with the Code Archaeology Tool."""
     # Load configuration
     config = load_config()
 
@@ -70,7 +70,7 @@ def chat(
     console.print()
     console.print(
         Panel.fit(
-            "[bold blue]OnboardingAgent - The Mentor[/bold blue]\n\n"
+            "[bold blue]Code Archaeology Tool - The Mentor[/bold blue]\n\n"
             "I'll help you navigate this codebase!\n\n"
             f"Repository: [cyan]{repo_path_obj.absolute()}[/cyan]\n"
             f"LLM: [cyan]{config['llm_provider']} ({config['llm_model']})[/cyan]",
@@ -91,8 +91,8 @@ def chat(
         sys.exit(1)
 
     # Initialize agent
-    console.print("[yellow]Initializing OnboardingAgent...[/yellow]")
-    agent = OnboardingAgent(repo_path=str(repo_path_obj), llm=llm)
+    console.print("[yellow]Initializing Code Archaeology Tool...[/yellow]")
+    agent = CodeArchaeologyAgent(repo_path=str(repo_path_obj), llm=llm)
 
     console.print("[green]✓ Ready to chat![/green]\n")
 
@@ -118,7 +118,7 @@ def chat(
                 break
 
             # Send to agent
-            console.print("\n[bold blue]OnboardingAgent[/bold blue] (thinking...)")
+            console.print("\n[bold blue]Code Archaeology Tool[/bold blue] (thinking...)")
 
             response = agent.chat(user_input, chat_history)
 
@@ -189,7 +189,7 @@ def analyze(repo_path: Optional[str]) -> None:
 
     # Initialize agent
     console.print("[yellow]Analyzing repository...[/yellow]\n")
-    agent = OnboardingAgent(repo_path=str(repo_path_obj), llm=llm)
+    agent = CodeArchaeologyAgent(repo_path=str(repo_path_obj), llm=llm)
 
     # Perform quick analysis
     results = agent.quick_analysis()
@@ -210,9 +210,9 @@ def analyze(repo_path: Optional[str]) -> None:
 @cli.command()
 def version() -> None:
     """Show version information."""
-    from onboarding_agent import __version__
+    from code_archaeology import __version__
 
-    console.print(f"OnboardingAgent version: [cyan]{__version__}[/cyan]")
+    console.print(f"Code Archaeology Tool version: [cyan]{__version__}[/cyan]")
 
 
 @cli.command()

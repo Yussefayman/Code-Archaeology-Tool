@@ -4,7 +4,7 @@ from typing import Any
 from langchain.tools import BaseTool
 from pydantic import Field
 
-from onboarding_agent.analyzers import ComplexityAnalyzer
+from code_archaeology.analyzers import ComplexityAnalyzer
 
 
 class ComplexityMapTool(BaseTool):

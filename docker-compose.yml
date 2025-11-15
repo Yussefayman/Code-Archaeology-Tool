@@ -1,12 +1,12 @@
 version: '3.8'
 
 services:
-  onboarding-agent:
+  code-archaeology:
     build:
       context: .
       dockerfile: Dockerfile
-    image: onboarding-agent:latest
-    container_name: onboarding-agent
+    image: code-archaeology:latest
+    container_name: code-archaeology
     environment:
       # Load from .env file
       - GROQ_API_KEY=${GROQ_API_KEY}
@@ -32,8 +32,8 @@ services:
       context: .
       dockerfile: Dockerfile
       target: builder
-    image: onboarding-agent:test
-    container_name: onboarding-agent-test
+    image: code-archaeology:test
+    container_name: code-archaeology-test
     volumes:
       - .:/app
     working_dir: /app

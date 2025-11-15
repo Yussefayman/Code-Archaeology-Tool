@@ -4,7 +4,7 @@ from pathlib import Path
 
 import pytest
 
-from onboarding_agent.analyzers import ASTAnalyzer
+from code_archaeology.analyzers import ASTAnalyzer
 
 
 def test_ast_analyzer_init(sample_repo: Path) -> None:

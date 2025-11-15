@@ -3,9 +3,9 @@ requires = ["setuptools>=68.0", "wheel"]
 build-backend = "setuptools.build_meta"
 
 [project]
-name = "onboarding-agent"
+name = "code-archaeology-tool"
 version = "0.1.0"
-description = "AI-powered OnboardingAgent to help developers navigate codebases"
+description = "AI-powered Code Archaeology Tool to help developers navigate and understand codebases"
 readme = "README.md"
 requires-python = ">=3.11"
 authors = [
@@ -44,7 +44,7 @@ dev = [
 ]
 
 [project.scripts]
-onboarding-agent = "onboarding_agent.cli.main:cli"
+code-archaeology = "code_archaeology.cli.main:cli"
 
 [tool.setuptools.packages.find]
 where = ["src"]

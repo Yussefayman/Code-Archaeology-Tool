@@ -4,7 +4,7 @@ from pathlib import Path
 
 import pytest
 
-from onboarding_agent.analyzers import ComplexityAnalyzer
+from code_archaeology.analyzers import ComplexityAnalyzer
 
 
 def test_complexity_analyzer_init(sample_repo: Path) -> None:

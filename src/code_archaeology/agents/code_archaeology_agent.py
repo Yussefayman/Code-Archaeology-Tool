@@ -1,11 +1,11 @@
-"""OnboardingAgent implementation using LangChain."""
+"""CodeArchaeologyAgent implementation using LangChain."""
 
 import os
 from typing import Any, Dict, List
 from langchain_core.prompts import ChatPromptTemplate
 from langchain_core.messages import HumanMessage, AIMessage, SystemMessage
 
-from onboarding_agent.tools import (
+from code_archaeology.tools import (
     EntryPointTool,
     LearningPathTool,
     CoreModulesTool,
@@ -13,11 +13,11 @@ from onboarding_agent.tools import (
 )
 
 
-class OnboardingAgent:
+class CodeArchaeologyAgent:
     """The Mentor - Helps new developers navigate the codebase."""
 
     def __init__(self, repo_path: str, llm: Any):
-        """Initialize the OnboardingAgent.
+        """Initialize the CodeArchaeologyAgent.
 
         Args:
             repo_path: Path to the repository to analyze
@@ -35,7 +35,7 @@ class OnboardingAgent:
         }
 
         # System prompt
-        self.system_prompt = """You are the OnboardingAgent, a friendly and knowledgeable mentor who helps new developers understand and navigate codebases.
+        self.system_prompt = """You are the CodeArchaeologyAgent, a friendly and knowledgeable mentor who helps new developers understand and navigate codebases.
 
 Your role:
 - Help developers find the right starting points for their tasks
