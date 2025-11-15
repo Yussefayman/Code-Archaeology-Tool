@@ -15,7 +15,7 @@ def load_config() -> Dict[str, Any]:
 
     config = {
         "llm_provider": os.getenv("LLM_PROVIDER", "groq"),
-        "llm_model": os.getenv("LLM_MODEL", "llama-3.1-70b-versatile"),
+        "llm_model": os.getenv("LLM_MODEL", "llama-3.3-70b-versatile"),
         "temperature": float(os.getenv("TEMPERATURE", "0.2")),
         "max_tokens": int(os.getenv("MAX_TOKENS", "4000")),
         "max_iterations": int(os.getenv("MAX_ITERATIONS", "5")),
